@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garuda Wishwall</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <!--
+        ID : page : for the name of the page 
+            subheading-page: for the inner textafter the Heading like sub-heading
+            main-messaging: the area where the messaging is present ,its like container to all 
+            username : the name of the user 
+            msg: message of the user
+            name-container: containing both the name label and input 
+            message-container : containing both the message label and input tag 
+            message-btn : id for the message button to be send
+            message-displaying: its an container for the displaying the earlier message posted by other 
+            each-message-container: it contain the message and name of previous user
+            existed-username : its name of the previous user person 
+            existed-message: its message of the previous user person 
+            delete-message: its button for the delete the message if possible make it icon using fontawesome 
+    -->
+    <header >
+        <section id="page">
+           <h1>Garuda Wishwall</h1>  <!--Page name -->
+            <div id="subheading-page">Share your thoughts with the community</div>
+        </section>
+        <section>
+            <!--Logo-->
+        </section>
+    </header>
+    <article id="main-messaging">
+        <h3>Post a Message</h3>
+        <div id="name-container">
+            <h5>Your Name</h5>
+            <input type="text" placeholder="Enter your name" id="Username">
+        </div>
+        <div id="message-container">
+            <h4>Your Message</h4>
+            <input type="text" placeholder="What's on your Mind? ..." id="msg">
+        </div>
+        <button type="submit" id="message-btn">Post Message</button>
+    </article>
+
+    <article id="message-displaying">
+        <h3>Message Wall</h3>
+        <section id="each-message-container">
+            <div id="existed-username"></div>
+            <div id="existed-message"></div>
+            <button id="delete-message"></button>
+        </section>
+    </article>
+    <script src="/app.js"></script>
+</body>
+</html>
