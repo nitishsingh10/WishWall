@@ -1,0 +1,9 @@
+/* Global CSS Variables */
+:root {
+  --primary: #ea6ae4;
+  --secondary: #6837fa;
+  --text-dark: #1f2937;
+  --text-light: #6b7280;
+  --bg-color: #f8fafc;
+  --white: #ffffff;
+}
