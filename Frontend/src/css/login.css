@@ -1,5 +1,149 @@
-#credentials{
+*{
+    font-family: Arial;
+}
+.card{
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 8px 9px 8px rgba(79, 79, 79, 0.7);
+    backdrop-filter: blur(10px);
+}
 
-    color: var(--primary);
+.details{
+    padding: 2rem;
+    width: 40%;
+    border-radius: 18px;
+}
 
+.bg-image{
+    background-image: url(/Frontend/src/assets/background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin: -8px;
+}
+
+.bg-image::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(223, 128, 255, 0.196);
+    backdrop-filter: blur(5px);
+}
+
+.fullscreen{
+    background-color: var(--bg-color);
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+}
+
+.main{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.subcards{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.stat-title{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.stat-subtitle{
+    font-size: 1rem;
+    color: var(--text-light);
+}
+
+.flex{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.stat-divider{
+    width: 1px;
+    height: 40px;
+    background: #acaeb1;
+}
+
+.feature{
+    display: flex;
+    align-items: center;
+    background-color: var(--card-bg);
+    margin: 1rem 0;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 8px 9px 8px rgba(79, 79, 79, 0.1);
+}
+
+.feature i{
+    background-color: var(--primary);
+    margin-right: 0.5rem;
+    padding: 10px;
+    color: var(--card-bg);
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+.feature:hover {
+    background-color: rgb(241, 221, 255);
+    transform: scale(1.05);
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease-in-out;
+    box-shadow: 0 0 5px var(--primary);
+}
+
+.login-card {
+    padding: 4rem;
+    border-radius: 16px;
+}
+
+.create{
+    text-decoration: none;
+    color: var(--primary-dark)
+}
+
+.create:hover{
+    color: var(--secondary);
+    cursor: pointer;
+}
+
+
+
+.inputs input{
+
+    margin: 1rem 0 ;
+    width: 90%;
+    padding: 0.8rem;
+    border: 1px solid var(--primary);
+    border-radius: 4px;
+}
+
+input:focus{
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 5px var(--primary);
+}
+
+button{
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--primary);
+    color: #ffffff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--primary-dark);
 }
