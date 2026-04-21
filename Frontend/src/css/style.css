@@ -1,10 +1,14 @@
 /* Global CSS Variables */
+
 :root {
-  --primary: #ea6ae4;
-  --secondary: #6837fa;
+  --primary: #e887e3;
+  --secondary: #7b00ff;
   --text-dark: #1f2937;
   --text-light: #6b7280;
-  --bg-color: #f8fafc;
   --white: #ffffff;
   --box-shadowing: rgba(0, 0, 0, 0.08);
+  --bg-color: #f3f6ff6d;
+  --card-bg: #ffffff6f;
+  --primary-dark: #d36dcf;  
 }
+
