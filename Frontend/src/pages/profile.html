@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile page </title>
+    <link rel="stylesheet" href="/Frontend/src/css/style.css">
+    <link rel="stylesheet" href="/Frontend/src/css/profile.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+<body>
+    <header>
+        <div>
+            <label id="logoName">Wishwall</label> 
+        </div>
+        <!-- inner-element-header : its arrange the feed and profile 
+            btn-overall : it provide basic styling for each button 
+            btnLogout: it is primary for the log out 
+        -->
+        <div>
+           <span>
+                  <a href="#" class="inner-element-header">Feed</a> 
+            </span>
+           <span>
+                 <a href="#"  class="inner-element-header" id="#profileActive">Profile</a>
+            </span>
+           <button type="button" class="btn-overall" id="btnLogout">Log out</button> 
+        </div> 
+    </header>
+    <!-- 
+        dashboardContainer - its whole body container except the header
+        profileContainer - its for the profile projection on left side 
+        img-container- its container for the img 
+        userId- its user ID
+        emailId - its email ID
+        solid-line - its an grey color  styling  for line  
+        bio-text-Basic style for bio contain 
+        editBtn - its for padding and margin styling for edit button
+     -->
+     <article id="dashboardContainer">
+        <section id="profileContainer">
+            <div class="img-container">
+                <img src="https://www.shutterstock.com/image-photo/scenic-image-iceland-incredible-nature-600nw-1453557041.jpg" alt="Profile-img" id="profileImgUser">
+            </div>
+            <div id="userId">Sandeep1232</div>
+            <div id="emailId">sandeep@gmail.com</div>
+            <hr class="solid-line">
+            <div class="bio-text">Bio</div>
+            <div><p class="bio-text">A passionate learner ready to explore campus event and enjoy the event </p></div>
+            <button type="button" class="btn-overall" id="editBtn">Edit Profile Bio</button>
+             <hr class="solid-line">
+
+    <!-- 
+             postCountContainer : its container for the post of the user inside the profile projection on left side
+             numberOfPost: no of post , its static  for now , must be  dynamic .
+             postlabel : Label for post
+     -->
+             <div id="postCountContainer">
+                <div id="numberOfPost">0</div>
+                <label id="postlabel">Post</label>
+             </div>
+        </section>
+        <!-- 
+            activityContainer : its container for the post and other activity 
+            titleActivity : title 
+            post-handler : provide the basic styling the color 
+            postActive : block the class styling  for the color and make the saved post looks clicked  
+            postHandlerContainer : its handler for the current post user is seeing , must be dynamic though its static 
+            message-of-activity : provide the basic structure styling 
+            my-post : display none show at a time only one shows up for static only 
+            
+         -->
+        <section id="activityContainer">
+            <label id="titleActivity">Your Recent Activity</label>
+            <div id="postHandlerContainer">
+                    <a href="#" class="post-handler">My post</a>
+                    <a href="#" class="post-handler" id="postActive">Saved Post</a>
+            </div>
+             <div class="message-of-activity my-post">
+                <p>You havent posted anything yet</p>
+                <!-- The below comments are need to be present if the user posted anything that need to be editied or deleted  -->
+                <!-- <div>
+                    <a href=""><span class="material-symbols-outlined">delete</span></a>
+                    <a href=""><span class="material-symbols-outlined">edit</span></a>
+                </div> -->
+            </div>
+            <div  class="message-of-activity" >
+                <p>Wish :Good luck for your exam, everyone!</p>
+                <div>
+                    <a href=""><span class="material-symbols-outlined">delete</span></a>
+                    <a href=""><span class="material-symbols-outlined">edit</span></a>
+                </div>
+            </div>
+        </section>
+    </article>
+</body>
+</html>
