@@ -1,0 +1,154 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+body{
+    background-color: var(--bg-color);
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 15px 25px;
+    box-shadow: 0 4px 12px var(--box-shadowing);
+    border-radius: 8px;
+}
+#logoName{
+    font-size: 20px;
+    font-weight: bold;
+    color: color-mix(in srgb, var(--primary) 45% , var(--secondary) )  ;
+}
+.inner-element-header{
+    margin: 10px;
+    color: var(--text-light) ;
+    font-weight: 500;
+    text-decoration: none;
+}
+.inner-element-header:hover{
+    color: color-mix(in srgb, var(--primary) 45% , var(--secondary) )  ;
+}
+#btnLogout{
+    padding:10px 16px;
+}
+.btn-overall{
+    border-radius: 7px;
+    border: 1px solid var(--text-light);
+}
+.btn-overall:hover{
+    background-color: color-mix(in srgb, var(--primary) 45% , var(--secondary) )  ;
+    color: var(--white);
+}
+#dashboardContainer{
+    display: flex;
+}
+#profileContainer{
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px var(--box-shadowing);
+    margin-left: 10%;
+    margin-top: 3%;
+    border-radius: 4%;
+    padding: 15px 25px;
+    width: 20vw;
+}
+.img-container{
+    display: flex;
+    justify-content: center;
+    
+}
+#profileImgUser{
+    border-radius:50% ;
+    width: 8vw;
+    height: 14vh;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0, 0, 0,0.3);
+}
+.solid-line{
+    border: none;
+    border-top: 1px solid lightgrey ;
+    width: 80%;
+    margin: 30px;
+    margin-left: 30px;
+}
+#userId{
+    display: flex;
+    justify-content: center;
+    margin-top: 14px;
+    font-size: 19px;
+    font-weight: 650;
+}
+#emailId{
+    display: flex;
+    justify-content: center;
+    color: var(--text-light);
+}
+
+.bio-text{
+    font-size: 14px;
+    font-weight: 600;
+    margin: 10px;
+}
+#editBtn{
+    padding: 10px;
+    margin: 10px;
+}
+#postCountContainer{
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   align-items: center;
+}
+#numberOfPost{
+    font-weight: 600;
+}
+#activityContainer{
+    padding: 2%;
+    padding-top: 3%;
+    width: 80vw;
+    box-sizing: border-box;
+}
+#titleActivity{
+    font-weight: bolder;
+    font-size: 19px;
+}
+.message-of-activity{
+   box-shadow: 0 4px 12px var(--box-shadowing);
+   margin-top: 20px;
+   padding: 40px; 
+   height: auto; 
+   width: 100%; 
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+   border-radius: 10px;
+   color: var(--text-light);
+   
+}
+
+#postHandlerContainer{
+    display: flex;
+    justify-content: center;
+}
+.post-handler{
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    text-decoration: none;
+    color:var(--text-light);
+    border: 1px solid var(--text-light) ;
+    border-radius: 20px;
+    padding: 10px;
+    margin-top: 15px
+}
+.post-handler:hover{
+     background-color: color-mix(in srgb, var(--primary) 45% , var(--secondary) )  ;
+    color: var(--white);
+}
+.my-post{
+    display: none;
+}
+#postActive{
+    background-color: color-mix(in srgb, var(--primary) 45% , var(--secondary) )  ;
+    color: var(--white);
+}
