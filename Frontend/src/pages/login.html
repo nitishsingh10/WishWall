@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login - WishWall</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="/Frontend/src/css/style.css">
     <link rel="stylesheet" href="/Frontend/src/css/login.css">
 </head>
+
 <body>
     <div id="mainContainer" class="fullscreen main bg-image">
 
-        <section id="details" class="card details">
+        <section id="details" class="card details animate-fade-in-left">
             <div style="font-size: 1.6rem;">
-                <h1>Share Your</h1> <h1 style="color: var(--secondary);">Wishwall Thoughts</h1>
+                <h1>Share Your</h1>
+                <h1 style="color: var(--secondary);">Wishwall Thoughts</h1>
 
-                <p style="color: var(--text-light); font-size: 1.3rem;" >
+                <p style="color: var(--text-light); font-size: 1.3rem;">
                     A platform where you can display your thoughts, ideas, <br>
                     your wishes..
                 </p>
@@ -46,27 +49,28 @@
 
             <div class="feature-tab">
 
-                <div class="feature">
+                <div class="feature animate-slide-in" style="--delay: 1">
                     <i class="bi bi-check-circle"></i><span>Share Your Thoughts</span>
                 </div>
 
-                <div class="feature">
+                <div class="feature animate-slide-in" style="--delay: 2">
                     <i class="bi bi-arrow-right"></i><span>Share your Memories</span>
                 </div>
-                <div class="feature">
+                <div class="feature animate-slide-in" style="--delay: 3">
                     <i class="bi bi-star"></i><span>Share Your Experience</span>
                 </div>
-                <div class="feature" >
+                <div class="feature animate-slide-in" style="--delay: 4">
                     <i class="bi bi-heart"></i><span>Share Your Wish</span>
                 </div>
 
             </div>
         </section>
 
-        <section id="credentials" class="cards credential-card">
+        <section id="credentials" class="cards credential-card animate-fade-in-right">
             <div class="card login-card">
                 <h2>Login to Your Account</h2>
-                <p style="color: var(--text-light); font-size: 1.1rem;">Enter your credentials to access your account</p>
+                <p style="color: var(--text-light); font-size: 1.1rem;">Enter your credentials to access your account
+                </p>
 
                 <div class="inputs">
                     <label for="email">Enter your email Address</label><br>
@@ -84,5 +88,9 @@
             </div>
         </section>
     </div>
+
+    <script src="/Frontend/src/js/script.js"></script>
+    <script src="/Frontend/src/js/login.js"></script>
 </body>
+
 </html>
