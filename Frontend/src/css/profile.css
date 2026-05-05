@@ -152,3 +152,7 @@ header{
     background-color: color-mix(in srgb, var(--primary) 45% , var(--secondary) )  ;
     color: var(--white);
 }
+#messagePostImage{
+    border-radius: 5%;
+    width: 15vw;
+}
