@@ -12,14 +12,16 @@ app.get('/', (req, res) => {
 const PORT = process.env.PORT || 5000;
 const MONGODB_URI = process.env.MONGODB_URI;
 
+const postRoutes = require("./routes/post.route");
+const authRoutes = require('./routes/authRoute');
+
 mongoose
   .connect(MONGODB_URI)
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("Could not connect to MongoDB", err));
 
-const authRoutes = require('./routes/authRoute');
-
 app.use('/api/auth', authRoutes);
+app.use('/api/posts', postRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
