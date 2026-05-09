@@ -3,7 +3,7 @@ const router = express.Router();
 const jwt = require('jsonwebtoken');
 const User = require('../models/user.model');
 const bcrypt = require('bcrypt');
-const { message } = require('statuses');
+
 
 router.post('/signup',async (req,res)=>{
 
@@ -18,7 +18,7 @@ router.post('/signup',async (req,res)=>{
             })
         }
 
-        const Exists = await User.findOne({userEmail});
+        const Exists = await User.findOne({email : userEmail});
 
         if(Exists){
             return res.json({
@@ -33,21 +33,32 @@ router.post('/signup',async (req,res)=>{
             email : userEmail,
             password : hashedPassword
         });
+        
+        const token = jwt.sign(
+            { id: user._id, name: user.name, email: user.email },
+            process.env.JWT_SECRET,
+            { expiresIn: '7d' }
+        );
 
         return res.status(200)
-        .json({
-            success : true,
-            message : "User created SuccessFully"
-        })
+                    .json({
+                        success : true,
+                        message : "User created SuccessFully",
+                        token,
+                        user: {
+                            name: user.name,
+                            email: user.email
+                        }
+                    })
         
     }
-    catch{
+    catch(err){
 
-        res.status(400)
-        .json({
-            success : false,
-            error : err.message
-        })
+        return res.status(400)
+                    .json({
+                        success : false,
+                        error : err.message
+                    })
     }
 
 });
@@ -59,47 +70,53 @@ router.post('/login',async (req,res)=>{
         const{email:userEmail , password : password} = req.body;
 
         if(!userEmail || !password){
-            res.status(400)
-                .json({
-                    message : "All fields are required"
-                })
+            return res.status(400)
+                        .json({
+                            message : "All fields are required"
+                        })
         }
 
-        const isThere = await User.findOne({email : userEmail});
+        const user = await User.findOne({email : userEmail});
 
-        if(!isThere){
-            return res.json({
+        if(!user){
+            return res.status(404).json({
                 message : "no user found with this mail"
             });
         }
 
-        const hashedPassword = await bcrypt.hash(password,10);
-
-        let isMatch = await bcrypt.compare(password,hashedPassword);
-
+        let isMatch = await bcrypt.compare(password, user.password);
         if(!isMatch){
             return res.status(400)
-                .json({
-                    message : "Incorrect password"
-                })
+                        .json({
+                            message : "Incorrect password"
+                        })
         }
+
+        const token = jwt.sign(
+            { id: user._id, name: user.name, email: user.email },
+            process.env.JWT_SECRET,
+            { expiresIn: '7d' }
+        );
 
         return res.status(200)
                     .json({
+                        success: true,
                         message : "Login successful",
-                        userData : {
-                            name : isThere.name,
-                            email : isThere.email
+                        token,
+                        user : {
+                            name : user.name,
+                            email : user.email
                         }
                     })
 
     }
-    catch{
-        res.status(400)
-        .json({
-            success : false,
-            error : err.message
-        })
+    catch(err){
+
+        return res.status(400)
+                    .json({
+                        success : false,
+                        error : err.message
+                    })
     }
 
 })
