@@ -1,3 +1,5 @@
+// signup and login feature are on the same page : logic to interchange between them
+
 function signupPage(){
     let page = document.getElementById("credentials");
 

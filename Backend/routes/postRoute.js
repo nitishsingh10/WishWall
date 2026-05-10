@@ -34,11 +34,11 @@ router.post("/newpost", verifyUser ,async (req,res)=>{
     }
 });
 
-router.post("/myposts",async (req,res)=>{
+router.post("/myposts", verifyUser, async (req,res)=>{
 
     try{
 
-        const{author} = req.body;
+        const author = req.user.name;
 
         const posts = await Post.find({author});
         res.json({
@@ -52,12 +52,12 @@ router.post("/myposts",async (req,res)=>{
 
 });
 
-router.get("/feed",async (req,res)=>{
+router.post("/feed", verifyUser, async (req,res)=>{
 
     try{
 
         const posts = await Post.find();
-        res.json({
+        return res.json({
             success : true,
             posts
         });

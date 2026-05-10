@@ -1,16 +1,15 @@
-const BASE_URL = 'http://localhost:3000'
+const BASE_URL = 'http://localhost:3000' // base url, PORT should come from .env but abi test ke liye thik hai
 
-
-
+// login feature
 async function handleLogin(){
 
     let email = document.getElementById('email').value;
     let password = document.getElementById('password').value;
 
     const response = await fetch(`${BASE_URL}/api/auth/login`,{
-        method : 'POST',
+        method : 'POST',  // to specify the method of how data has to handled 
         headers : {
-            'Content-Type' : 'application/json'
+            'Content-Type' : 'application/json' // to specify that data will be in json format
         },
         body : JSON.stringify({
             email,
@@ -18,11 +17,13 @@ async function handleLogin(){
         })
     });
 
+    // after login user data ko collect krna hai
     const data = await response.json();
 
+    // data se jo token araha hai use apan localStorage yani browser memory me save karle rahe hai taki badme directly verify karske
     if(data.success){
         localStorage.setItem('token',data.token);
-        localStorage.setItem('name',data.userData.name);
+        localStorage.setItem('name',data.user.name);
         window.location.href = "feed.html";
     }
     else{
@@ -30,6 +31,7 @@ async function handleLogin(){
     }
 }
 
+// signup feature
 async function handleSignup(){
 
     let name = document.getElementById("name").value;
@@ -50,8 +52,11 @@ async function handleSignup(){
 
     });
 
+    // signup hote hi feed page pe bhejna hai
+
     const data = await response.json();
-    console.log(data);
+
+    // user create hote hi uska data aur token lena hai and local storage me save krdena hai.. taki badme direct verify hojaye
 
     if(data.success){
         localStorage.setItem('token',data.token);
