@@ -6,11 +6,9 @@ const PORT = process.env.PORT || 5000;
 app.use(express.json());
 const cors = require('cors');
 
-app.use(cors());
 
-app.get('/', (req, res) => {
-  res.send('Hello, World!');
-});
+// It was blocking request form third party urls.. because of cors policy to avoid that we need this
+app.use(cors());
 
 connectToDatabase();
 

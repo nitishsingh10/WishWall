@@ -31,7 +31,7 @@ window.onload = async()=>{
 
 }
 
-// feeddata ko collect krna
+// feed data ko collect krna
 async function loadFeed(token){
 
     const response = await fetch(`${BASE_URL}/api/post/feed`,{
@@ -69,6 +69,41 @@ function displayFeed(){
       </div>
     </div>`
     });
+
+}
+
+// Creation of new post directly from feed
+
+async function createPost(){
+    
+    let token = localStorage.getItem('token');
+    let postInput = document.getElementById('post-input').value; // message taken from the user
+    console.log(postInput);
+    
+    const response = await fetch(`${BASE_URL}/api/post/newpost`,{
+        
+        method : 'POST',
+        headers : {
+            "Content-Type" : "application/json",
+            "Authorization" : `Bearer ${token}`,
+        },
+        body : JSON.stringify({ // JSON.stringify : convert to json object
+            message : postInput
+        })
+
+    }) ;
+
+    const data = await response.json();
+
+    // push the data to main array to print the data
+    if(data.success){
+        document.getElementById('post-input').value = "";
+        posts = [data.post, ...posts];
+        displayFeed();
+    }
+    else{
+        alert(data.message);
+    }
 
 }
 
