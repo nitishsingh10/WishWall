@@ -45,8 +45,8 @@ router.post("/myposts", verifyUser, async (req,res)=>{ // only shows post create
             posts
         });
     }
-    catch{
-        res.json({success:false, message: "post not found"});
+    catch(err){
+        res.json({success:false, message: "post not found" + err });
     }
 
 });

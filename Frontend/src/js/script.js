@@ -65,7 +65,7 @@ function loginPage() {
 
                 <p>Dont have an account ? <a onclick="signupPage()" class="create">Create now</a></p>
 
-                <button id="login-btn"><i class="bi bi-check"></i>Login</button>
+                <button id="login-btn" onclick="handleLogin()"><i class="bi bi-check"></i>Login</button>
             </div>`
 
 }

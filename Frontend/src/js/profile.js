@@ -1,4 +1,4 @@
-BASE_URL = "http://localhost:3000"
+const BASE_URL = "http://localhost:3000";
 
 let token = localStorage.getItem('token');
 window.onload = async()=>{
@@ -37,15 +37,15 @@ function render(posts){
       <div class="go-corner">
         <button class="go-arrow arrow-btn">→</button>
       </div>
-      <button onclick="deletePost(${elemId})">delete</button>
+      <button onclick="deletePost('${elemId}')">delete</button>
     </div>`
     });
 
 }
 
-// some error passing the element : maybe it is becuase of asynchronoues part;
+// some error passing the element 
 function deletePost(elem){
     
-    console.log(elem);
+
 
 }
