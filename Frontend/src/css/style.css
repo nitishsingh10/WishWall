@@ -1,0 +1,16 @@
+/* Global CSS Variables */
+
+ :root {
+  --primary: #87cde8;
+  --primary-dark: #6dafd3;
+  --secondary: #001eff;
+  --secondary-light: #4d77ff;
+  --text-dark: #0f172a;
+  --text-light: #64748b;
+  --bg-color: #f8fafc;
+  --card-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --glass-shadow: rgba(0, 0, 0, 0.1);
+  --accent: #f472b6;
+}
+

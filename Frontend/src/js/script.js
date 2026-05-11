@@ -1,53 +1,71 @@
-const btn = document.getElementById("message-btn");
-const feed = document.getElementById("message-displaying");
-const posts = [];
+// signup and login feature are on the same page : logic to interchange between them
 
-// User post logic 
+function signupPage(){
+    let page = document.getElementById("credentials");
 
-btn.addEventListener('click',()=>{
+    page.innerHTML=`<div class="card login-card">
+                <h2>Create Your Account</h2>
+                <p style="color: var(--text-light); font-size: 1.1rem;">Enter your credentials to create your account</p>
 
-    // Inputs of user 
+                <div class="inputs">
+                    <label for="name">Enter your full Name</label><br>
+                    <input type="name" id="name" placeholder="Your Full Name">
+                </div>
 
-    const userName = document.getElementById("Username")
-                    .value
-                    .trim();
+                <div class="inputs">
+                    <label for="email">Enter your email Address</label><br>
+                    <input type="email" id="email" placeholder="Your email">
+                </div>
 
-    const message = document.getElementById("msg")
-                    .value
-                    .trim();
+                <div class="inputs">
+                    <label for="password">Enter your password</label><br>
+                    <input type="password" id="password" placeholder="Your Password">
+                    <input type="password" id="cnfpassword" placeholder="confirm Password">
+                </div>
+                <div id="pass-msg" style="color : red"></div>
 
+                <p>Already have an account ? <a onclick="loginPage()" class="create">Login now</a></p>
 
-    // Storing user data in object array for future use.
+                <button id="signup-btn" onclick="handleSignup()"><i class="bi bi-check"></i>Sign up</button>
+            </div>`;
+            
+            let pass = document.getElementById("password");
+            
+            let cnf = document.getElementById("cnfpassword");
+            
+            cnf.addEventListener("blur",()=>{
+                
+                if(pass.value != cnf.value){
+                    document.getElementById("pass-msg").textContent = "Password did not match";
+                }
+                else{
+                    document.getElementById("pass-msg").textContent = "";
+                }
+            
+            })
+}
 
-    const postObj = {name:`${userName}`, text : `${message}`};
+function loginPage() {
     
-    posts.push(postObj);
+    let page = document.getElementById("credentials");
+    
+    page.innerHTML = `<div class="card login-card">
+                <h2>Login to Your Account</h2>
+                <p style="color: var(--text-light); font-size: 1.1rem;">Enter your credentials to access your account</p>
 
-    const post = document.createElement("div");
+                <div class="inputs">
+                    <label for="email">Enter your email Address</label><br>
+                    <input type="email" id="email" placeholder="Your email">
+                </div>
 
-    //class list for styling
+                <div class="inputs">
+                    <label for="password">Enter your password</label><br>
+                    <input type="password" id="password" placeholder="Your Password">
+                </div>
 
-    post.classList.add("user-post");
+                <p>Dont have an account ? <a onclick="signupPage()" class="create">Create now</a></p>
 
-    // appending the message
-
-    post.innerHTML = `<h4>${postObj.name}</h4>
-                    <p>${postObj.text}</p>`;
-
-    feed.prepend(post);
-
-
-    // clear exisiting inputs
-    clear();
-
-})
-
-
-function clear(){
-
-    document.getElementById("Username")
-    .value = "";
-    document.getElementById("msg")
-    .value = "";
+                <button id="login-btn"><i class="bi bi-check"></i>Login</button>
+            </div>`
 
 }
