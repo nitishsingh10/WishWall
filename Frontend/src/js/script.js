@@ -37,9 +37,11 @@ function signupPage(){
                 
                 if(pass.value != cnf.value){
                     document.getElementById("pass-msg").textContent = "Password did not match";
+                    document.getElementById("signup-btn").disabled = true;
                 }
                 else{
                     document.getElementById("pass-msg").textContent = "";
+                    document.getElementById("signup-btn").disabled = false;
                 }
             
             })

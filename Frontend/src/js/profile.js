@@ -49,3 +49,14 @@ function deletePost(elem){
 
 
 }
+
+function handleLogout(){
+    
+    document.querySelector("body").textContent = "Logout Successfull redirecting to login page";
+
+    // clear the local storage so the userdata is cleared and is required to login again
+    setTimeout(()=>{
+        localStorage.clear();
+        window.location.href = "login.html"
+    },3000);
+}
