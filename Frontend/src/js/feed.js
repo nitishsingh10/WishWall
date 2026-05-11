@@ -11,7 +11,7 @@ window.onload = async()=>{
         if(!verifiedUser){ // check for the token
 
             // token agar nhi milta to user ko login page pe bhejne ke liye
-            document.getElementById("main-container").textContent = "NO USER FOUND REDIRECTING TO LOGIN PAGE"
+            document.querySelector("body").textContent = "NO USER FOUND REDIRECTING TO LOGIN PAGE"
 
             // delay taki user ko problem dikhe
             setTimeout(()=>{
@@ -107,11 +107,10 @@ async function createPost(){
 
 }
 
-
 // logout feature
 function handleLogout(){
     
-    document.getElementById("main-container").textContent = "Logout Successfull redirecting to login page";
+    document.querySelector("body").textContent = "Logout Successfull redirecting to login page";
 
     // clear the local storage so the userdata is cleared and is required to login again
     setTimeout(()=>{

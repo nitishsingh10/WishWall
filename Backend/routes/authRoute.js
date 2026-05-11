@@ -18,6 +18,8 @@ router.post('/signup',async (req,res)=>{
             })
         }
 
+        // Have set email as unique so can be used to finc specific user
+
         const Exists = await User.findOne({email : userEmail});
 
         if(Exists){
@@ -33,6 +35,8 @@ router.post('/signup',async (req,res)=>{
             email : userEmail,
             password : hashedPassword
         });
+
+        // user create karte hi main feed pe jayega isliye yaha jwt sign krdenge.. so that next time directly a jaye.
         
         const token = jwt.sign(
             { id: user._id, name: user.name, email: user.email },
@@ -91,6 +95,8 @@ router.post('/login',async (req,res)=>{
                             message : "Incorrect password"
                         })
         }
+
+        //  if everything is good, jwt token generate krna hai.. that will be used for future verification
 
         const token = jwt.sign(
             { id: user._id, name: user.name, email: user.email },

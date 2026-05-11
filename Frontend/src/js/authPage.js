@@ -27,7 +27,7 @@ async function handleLogin(){
         window.location.href = "feed.html";
     }
     else{
-        alert(data.message);
+        document.getElementById("pass-msg").textContent = data.message;
     }
 }
 
