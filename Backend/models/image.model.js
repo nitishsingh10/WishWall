@@ -10,7 +10,7 @@ const imageSchema = new mongoose.Schema({
   caption: {
     type: String,
     trim: true,
-    default : '';
+    default : ''
   },
 
   author : {
