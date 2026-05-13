@@ -30,13 +30,15 @@ function render(posts){
 
     posts.forEach((element) => {
         const elemId = element._id;
+        let content = "";
+
         if(element.image){ // if image is found display that else, normal message
 
-            let content = `<img src="${element.image}" alt="post image" style="width:50%; border-radius:8px;">
+            content = `<img src="${element.image}" alt="post image" style="width:50%; border-radius:8px;">
                <p class="small-desc">${element.caption}</p>`;
         }
         else{
-            let content = `<p class="small-desc">${element.message}</p>`;
+            content = `<p class="small-desc">${element.message}</p>`;
 
         }
         root.innerHTML+=` <div class="card">

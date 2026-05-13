@@ -58,15 +58,16 @@ function displayFeed(){
 
     posts.forEach((element) => { 
         // check if it is an image post or a text post and display accordingly
+        let content = "";
 
         // these are templates from internet and must be updated;
         if(element.image){ // if image is found display that else, normal message
 
-            let content = `<img src="${element.image}" alt="post image" style="width:50%; border-radius:8px;">
+            content = `<img src="${element.image}" alt="post image" style="width:50%; border-radius:8px;">
                <p class="small-desc">${element.caption}</p>`;
         }
         else{
-            let content = `<p class="small-desc">${element.message}</p>`;
+            content = `<p class="small-desc">${element.message}</p>`;
 
         }
 
