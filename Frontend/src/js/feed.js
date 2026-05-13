@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3000'
+const BASE_URL = 'wishwall-production.up.railway.app'
 let posts =[];
 
 // onload token verify krna hai.. if token exists allow karo to stay otherwise login pe bhaga do
@@ -62,11 +62,11 @@ function displayFeed(){
         // these are templates from internet and must be updated;
         if(element.image){ // if image is found display that else, normal message
 
-            content = `<img src="${element.image}" alt="post image" style="width:50%; border-radius:8px;">
+            let content = `<img src="${element.image}" alt="post image" style="width:50%; border-radius:8px;">
                <p class="small-desc">${element.caption}</p>`;
         }
         else{
-            content = `<p class="small-desc">${element.message}</p>`;
+            let content = `<p class="small-desc">${element.message}</p>`;
 
         }
 

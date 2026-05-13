@@ -17,7 +17,8 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon Backend/main.js"
+    "start": "node Backend/main.js",
+    "dev" : "nodemon Backend/main.js"
   },
   "dependencies": {
     "accepts": "^2.0.0",

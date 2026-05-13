@@ -10,7 +10,7 @@ const userSchema = new mongoose.Schema({
     },
     bio : {
         type: String,
-        default : "Some Bio"
+        default : 'some bio'
     },
     email:{
         type: String,
