@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
  
 const verifyUser = (req, res, next) => {
 
+    // reads the token from header for verification
     const authHeader = req.headers.authorization;
     const token = authHeader.split(' ')[1]; 
  
@@ -15,7 +16,7 @@ const verifyUser = (req, res, next) => {
     try {
 
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        req.user = decoded;
+        req.user = decoded; // if valid : sent as req.user
         next();
 
     } 

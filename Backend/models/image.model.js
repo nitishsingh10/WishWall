@@ -11,9 +11,19 @@ const imageSchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true
+  },
+
+  author : {
+    type: String,
+    required: true
+  },
+
+  time : {
+    type : Date,
+    default : Date.now
   }
 }, { timestamps: true });
 
-const Post = mongoose.model('image', imageSchema);
+const Image = mongoose.model('image', imageSchema);
 
-module.exports = image;
+module.exports = Image;

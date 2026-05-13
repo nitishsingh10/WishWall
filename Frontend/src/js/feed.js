@@ -56,20 +56,29 @@ function displayFeed(){
     let root = document.getElementById("main-container");
     root.innerHTML = "";
 
-    posts.forEach(element => {
-        // sample card for temporary presentation
-        root.innerHTML+=` <div class="card">
+    posts.forEach((element) => { 
+        // check if it is an image post or a text post and display accordingly
+
+        // these are templates from internet and must be updated;
+        if(element.image){ // if image is found display that else, normal message
+
+            content = `<img src="${element.image}" alt="post image" style="width:50%; border-radius:8px;">
+               <p class="small-desc">${element.caption}</p>`;
+        }
+        else{
+            content = `<p class="small-desc">${element.message}</p>`;
+
+        }
+
+    root.innerHTML+=` <div class="card">
       <p class="card-title">${element.author}</p> 
-      <p class="small-desc">
-        ${element.message}
-      </p>
+      ${content}
       <p class="time-desc">${new Date(element.time)}</p>
       <div class="go-corner">
         <button class="go-arrow arrow-btn">→</button>
       </div>
     </div>`
     });
-
 }
 
 // Creation of new post directly from feed

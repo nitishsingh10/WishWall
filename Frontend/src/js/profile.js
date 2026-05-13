@@ -1,3 +1,4 @@
+
 const BASE_URL = "http://localhost:3000";
 
 let token = localStorage.getItem('token');
@@ -15,8 +16,12 @@ window.onload = async()=>{
 
     const data = await response.json();
 
-    render(data.posts);
+    let posts = data.posts;
 
+    posts = [...posts];
+
+    render(posts);
+    document.getElementById("greet-msg").innerText = `Hello ! ${localStorage.getItem('name')} your bio : ${localStorage.getItem('bio')}`;
 }
 
 function render(posts){
@@ -26,12 +31,18 @@ function render(posts){
 
     posts.forEach((element) => {
         const elemId = element._id;
-        // sample card for temporary presentation
+        if(element.image){ // if image is found display that else, normal message
+
+            content = `<img src="${element.image}" alt="post image" style="width:50%; border-radius:8px;">
+               <p class="small-desc">${element.caption}</p>`;
+        }
+        else{
+            content = `<p class="small-desc">${element.message}</p>`;
+
+        }
         root.innerHTML+=` <div class="card">
       <p class="card-title">${element.author}</p> 
-      <p class="small-desc">
-        ${element.message}
-      </p>
+      ${content}
       <p class="time-desc">${new Date(element.time)}</p>
       <div class="go-corner">
         <button class="go-arrow arrow-btn">→</button>
@@ -70,9 +81,40 @@ async function deletePost(elem){
     }
 }
 
+// posting images feature 
+
+async function uploadImage() {
+    const file = document.getElementById('image-input').files[0];
+    const caption = document.getElementById('caption-input').value;
+
+ // if no file is selected it should return :::: Alert should be replaced with suitable toast messages
+    if (!file) return alert("Please select an image");
+
+    const formData = new FormData();  // formData bundles everything 
+    formData.append('image', file);
+    formData.append('caption', caption);
+
+    const response = await fetch(`${BASE_URL}/api/post/upload`, {
+        method : 'POST',
+        headers : {
+            "Authorization" : `Bearer ${token}`
+        },
+        body : formData
+    });
+
+    const data = await response.json();
+    if (data.success) {
+        document.getElementById('image-input').value = "";
+        document.getElementById('caption-input').value = "";
+        window.location.reload();
+    } else {
+        alert(data.message);
+    }
+}
+
 function handleLogout(){
 
-    if(!confirm("Do You really want to logout ?")){
+    if(!confirm("Do You really want to logout ?")){ // This too shall be replaced with popup messages
         return;
     }
     
@@ -84,5 +126,3 @@ function handleLogout(){
         window.location.href = "login.html"
     },3000);
 }
-
-document.getElementById("greet-msg").innerText = `Hello ! ${localStorage.getItem('name')} your bio : ${localStorage.getItem('bio')}`
