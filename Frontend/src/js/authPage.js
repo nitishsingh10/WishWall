@@ -25,7 +25,7 @@ async function handleLogin(){
         localStorage.setItem('token',data.token);
         localStorage.setItem('name',data.user.name);
         localStorage.setItem('bio',data.user.bio);
-        window.location.href = "feed.html";
+        window.location.href = "/feed";
     }
     else{
         document.getElementById("pass-msg").textContent = data.message;
@@ -63,7 +63,7 @@ async function handleSignup(){
         localStorage.setItem('token',data.token);
         localStorage.setItem('name',data.user.name);
         localStorage.setItem('bio',data.user.bio);
-        window.location.href = "feed.html";
+        window.location.href = "/feed";
     }
     else{
         console.log(data.message);

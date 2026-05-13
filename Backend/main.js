@@ -9,7 +9,7 @@ const cors = require('cors');
 
 // It was blocking request form third party urls.. because of cors policy to avoid that we need this
 app.use(cors({
-    origin: ['https://yourwishwall.netlify.app', 'http://localhost:3000']
+    origin: ['https://yourwishwall.netlify.app', 'http://127.0.0.1:5500']
 }));
 
 connectToDatabase();

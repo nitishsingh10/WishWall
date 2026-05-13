@@ -15,7 +15,7 @@ window.onload = async()=>{
 
             // delay taki user ko problem dikhe
             setTimeout(()=>{
-                window.location.href = "login.html"
+                window.location.href = "/login"
             },5000);
         }
         else{
@@ -128,6 +128,6 @@ function handleLogout(){
     // clear the local storage so the userdata is cleared and is required to login again
     setTimeout(()=>{
         localStorage.clear();
-        window.location.href = "login.html"
+        window.location.href = "/login"
     },3000);
 }
