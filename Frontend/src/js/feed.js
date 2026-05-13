@@ -1,4 +1,4 @@
-const BASE_URL = 'wishwall-production.up.railway.app'
+const BASE_URL = 'https://wishwall-production.up.railway.app';
 let posts =[];
 
 // onload token verify krna hai.. if token exists allow karo to stay otherwise login pe bhaga do

@@ -1,4 +1,4 @@
-const BASE_URL = "wishwall-production.up.railway.app";
+const BASE_URL = 'https://wishwall-production.up.railway.app';
 
 let token = localStorage.getItem('token');
 window.onload = async()=>{

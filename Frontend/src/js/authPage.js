@@ -1,4 +1,4 @@
-const BASE_URL = 'wishwall-production.up.railway.app' // base url, PORT should come from .env but abi test ke liye thik hai
+const BASE_URL = 'https://wishwall-production.up.railway.app'; // base url
 
 // login feature
 async function handleLogin(){
