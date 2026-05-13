@@ -24,6 +24,7 @@ async function handleLogin(){
     if(data.success){
         localStorage.setItem('token',data.token);
         localStorage.setItem('name',data.user.name);
+        localStorage.setItem('bio',data.user.bio);
         window.location.href = "feed.html";
     }
     else{
@@ -61,6 +62,7 @@ async function handleSignup(){
     if(data.success){
         localStorage.setItem('token',data.token);
         localStorage.setItem('name',data.user.name);
+        localStorage.setItem('bio',data.user.bio);
         window.location.href = "feed.html";
     }
     else{

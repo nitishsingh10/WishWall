@@ -35,7 +35,7 @@ window.onload = async()=>{
 async function loadFeed(token){
 
     const response = await fetch(`${BASE_URL}/api/post/feed`,{
-        method : 'POST',
+        method : 'GET',
         headers : {
             "Content-type" : 'application/json', 
             "Authorization": `Bearer ${token}` // token pass taki verify kr paye if the request is good
@@ -109,6 +109,10 @@ async function createPost(){
 
 // logout feature
 function handleLogout(){
+
+    if(!confirm("Do You really want to logout ?")){ // This shall be replaced with a toast message or in-page popup
+        return;
+    }
     
     document.querySelector("body").textContent = "Logout Successfull redirecting to login page";
 

@@ -25,8 +25,7 @@ function render(posts){
     root.innerHTML = "";
 
     posts.forEach((element) => {
-
-        let elemId = element._id;
+        const elemId = element._id;
         // sample card for temporary presentation
         root.innerHTML+=` <div class="card">
       <p class="card-title">${element.author}</p> 
@@ -43,14 +42,39 @@ function render(posts){
 
 }
 
-// some error passing the element 
-function deletePost(elem){
+// delete post feature 
+async function deletePost(elem){
+
+    if(!confirm(("do you really want to delete this post ?"))){
+        return;
+    }
     
+    try{
+        let response = await fetch(`${BASE_URL}/api/post/delete/${elem}`,{
+            method : 'DELETE',
+            headers : {
+                "Content-Type" : 'application/json',
+                "Authorization" : `Bearer ${token}`
+            }
+        });
 
-
+        const data = await response.json();
+        if(data.success){
+            window.location.reload();  // page refresh on delete
+        } else {
+            alert(data.message);
+        }
+    }
+    catch(err){
+        console.log(err);
+    }
 }
 
 function handleLogout(){
+
+    if(!confirm("Do You really want to logout ?")){
+        return;
+    }
     
     document.querySelector("body").textContent = "Logout Successfull redirecting to login page";
 
@@ -60,3 +84,5 @@ function handleLogout(){
         window.location.href = "login.html"
     },3000);
 }
+
+document.getElementById("greet-msg").innerText = `Hello ! ${localStorage.getItem('name')} your bio : ${localStorage.getItem('bio')}`

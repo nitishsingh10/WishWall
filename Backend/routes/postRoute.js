@@ -33,6 +33,14 @@ router.post("/newpost", verifyUser ,async (req,res)=>{ // verifyUser :  middlewa
     }
 });
 
+router.post("/upload", upload.single('image'), async (req,res)=>{
+
+    
+
+});
+
+    
+
 router.post("/myposts", verifyUser, async (req,res)=>{ // only shows post created by current user : in profile page
 
     try{
@@ -46,12 +54,12 @@ router.post("/myposts", verifyUser, async (req,res)=>{ // only shows post create
         });
     }
     catch(err){
-        res.json({success:false, message: "post not found" + err });
+        res.json({success:false, message: "post not found", err });
     }
 
 });
 
-router.post("/feed", verifyUser, async (req,res)=>{ // global feed any verified user can see 
+router.get("/feed", verifyUser, async (req,res)=>{ // global feed any verified user can see 
 
     try{
 
@@ -63,9 +71,47 @@ router.post("/feed", verifyUser, async (req,res)=>{ // global feed any verified 
 
     }
     catch{
-        res.json({success:false, message: "post not found"});
+        res.status(404)
+            .json({success:false, message: "post not found"});
     }
-})
+});
+
+
+
+router.delete("/delete/:id", verifyUser, async (req,res)=>{
+
+    try{
+
+        let id = req.params.id; 
+    
+        const deletedPost = await Post.findOneAndDelete({ // find the post by id and delete it.
+            _id : id
+        });
+        
+        if(!deletedPost){
+            return res.status(404)
+                        .json({
+                            success : false,
+                            message : "post not found"
+                        })
+        }
+
+        return res.status(200)
+                    .json({
+                        success : true,
+                        message : "post deleted successfully"
+                    })
+    }
+    catch(err){
+        res.status(400)
+            .json({
+                success : false,
+                message : err.message
+            });
+
+    }
+
+} );
 
 module.exports = router;
 
