@@ -59,17 +59,16 @@ function displayFeed(){
     posts.forEach((element) => { 
         // check if it is an image post or a text post and display accordingly
         let content = "";
-
-        // these are templates from internet and must be updated;
         if(element.image){ // if image is found display that else, normal message
-
+            
             content = `<img src="${element.image}" alt="post image" style="width:50%; border-radius:8px;">
-               <p class="small-desc">${element.caption}</p>`;
+            <p class="small-desc">${element.caption}</p>`;
         }
         else{
             content = `<p class="small-desc">${element.message}</p>`;
-
+            
         }
+        // these are templates from internet and must be updated;
 
     root.innerHTML+=` <div class="card">
       <p class="card-title">${element.author}</p> 
@@ -114,6 +113,47 @@ async function createPost(){
     else{
         alert(data.message);
     }
+
+}
+
+async function uploadImage(){
+    
+    
+    let token = localStorage.getItem('token');
+    const file = document.getElementById('image-input').files[0];
+    const caption = document.getElementById('caption-input').value;
+    
+    if (!file) return alert("Please select an image");
+    const formData = new FormData();
+    formData.append('image', file);
+    formData.append('caption', caption);
+
+    try{
+
+        const response = await fetch(`${BASE_URL}/api/post/upload`, {
+            method: 'POST',
+            headers: {
+                "Authorization": `Bearer ${token}`
+            },
+            body: formData
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            document.getElementById('image-input').value = "";
+            document.getElementById('caption-input').value = "";
+            window.location.reload();
+        } else {
+            alert(data.message);
+        }
+
+    }
+    catch(err){
+        console.log(err);
+    };
+
+
 
 }
 

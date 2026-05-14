@@ -14,12 +14,19 @@
 
     <div id="create-post">
 
-        <label for="message">Show your Thoughts</label>
-        <br>
-        <input type="file" id="image-input" accept="image/*">
-        <br>
-        <textarea type="text" id="post-input"></textarea>
-        <button id="post-btn" onclick="createPost()">Post</button>
+        <h4>Show Your Thoughts</h4>
+        <div id="image-post">
+            <input type="file" id="image-input" accept="image/*">
+            <input type="text" id="caption-input" placeholder="Add a caption">
+            <button onclick="uploadImage()">Upload</button>
+        </div>
+
+        <h4>Share Your Thoughts</h4>
+        <div id="blog-post">
+            <textarea type="text" id="post-input"></textarea>
+            <button id="post-btn" onclick="createPost()">Post</button>
+        </div>
+        
 
     </div>
 

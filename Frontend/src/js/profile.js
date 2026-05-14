@@ -1,4 +1,5 @@
 const BASE_URL = 'https://wishwall-production.up.railway.app';
+let posts = [];
 
 let token = localStorage.getItem('token');
 window.onload = async()=>{
@@ -15,11 +16,12 @@ window.onload = async()=>{
 
     const data = await response.json();
 
-    let posts = data.posts;
-
-    posts = [...posts];
-
-    render(posts);
+    if(data.success) {
+        // latest post must come first..
+        posts = [...data.posts.reverse()]; // collect the data
+        console.log(posts);
+        render(posts); // pass the data to render the feed
+    }
     document.getElementById("greet-msg").innerText = `Hello ! ${localStorage.getItem('name')} your bio : ${localStorage.getItem('bio')}`;
 }
 
@@ -30,8 +32,7 @@ function render(posts){
 
     posts.forEach((element) => {
         const elemId = element._id;
-        let content = "";
-
+        let content ="";
         if(element.image){ // if image is found display that else, normal message
 
             content = `<img src="${element.image}" alt="post image" style="width:50%; border-radius:8px;">
@@ -82,6 +83,44 @@ async function deletePost(elem){
     }
 }
 
+async function createPost(){
+    
+
+    let token = localStorage.getItem('token');
+    let postInput = document.getElementById('post-input').value; // message taken from the user
+    console.log(postInput);
+    
+    try{
+            const response = await fetch(`${BASE_URL}/api/post/newpost`,{
+                
+                method : 'POST',
+                headers : {
+                    "Content-Type" : "application/json",
+                    "Authorization" : `Bearer ${token}`,
+                },
+                body : JSON.stringify({ // JSON.stringify : convert to json object
+                    message : postInput
+                })
+        
+            }) ;
+        
+            const data = await response.json();
+            console.log(data);
+
+            if(data){
+
+                window.location.reload();
+            }
+            else{
+                console.log("no refresh");
+            }
+
+    }
+    catch(err){
+        console.log(err);
+    }
+
+}
 // posting images feature 
 
 async function uploadImage() {
@@ -95,22 +134,28 @@ async function uploadImage() {
     formData.append('image', file);
     formData.append('caption', caption);
 
-    const response = await fetch(`${BASE_URL}/api/post/upload`, {
-        method : 'POST',
-        headers : {
-            "Authorization" : `Bearer ${token}`
-        },
-        body : formData
-    });
-
-    const data = await response.json();
-    if (data.success) {
-        document.getElementById('image-input').value = "";
-        document.getElementById('caption-input').value = "";
-        window.location.reload();
-    } else {
-        alert(data.message);
+    try{
+        const response = await fetch(`${BASE_URL}/api/post/upload`, {
+            method : 'POST',
+            headers : {
+                "Authorization" : `Bearer ${token}`
+            },
+            body : formData
+        });
+    
+        const data = await response.json();
+        if (data.success) {
+            document.getElementById('image-input').value = "";
+            document.getElementById('caption-input').value = "";
+            window.location.reload();
+        } else {
+            alert(data.message);
+        }
     }
+    catch(err){
+        console.log(err);
+    }
+
 }
 
 function handleLogout(){
