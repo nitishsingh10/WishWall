@@ -24,7 +24,7 @@ async function handleLogin(){
     if(data.success){
         localStorage.setItem('token',data.token);
         localStorage.setItem('name',data.user.name);
-        localStorage.setItem('bio',data.user.bio);
+        localStorage.setItem('bio', data.user.bio || 'some bio');
         window.location.href = "/feed";
     }
     else{

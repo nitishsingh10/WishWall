@@ -3,39 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WishWall</title>
+    <title>Feed - WishWall</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/feed.css">
 </head>
 <body>
+    <div class="bg-image layout-wrapper">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar card glass-panel">
+            <div class="brand">
+                <h1>Wish<span class="highlight">Wall</span></h1>
+            </div>
+            
+            <nav class="nav-links">
+                <a href="#" class="nav-item active"><i class="bi bi-house-door"></i> Feed</a>
+                <a href="profile.html" class="nav-item"><i class="bi bi-person"></i> Profile</a>
+            </nav>
 
-    <!-- frontend work is pending -->
-    <a href="profile.html">Profile</a>
-    <h4 id="Greeting"></h4>
+            <div class="sidebar-footer">
+                <button class="btn-logout" onclick="handleLogout()"><i class="bi bi-box-arrow-right"></i> Logout</button>
+            </div>
+        </aside>
 
-    <div id="create-post">
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="top-header card glass-panel">
+                <h2 id="Greeting">Welcome to WishWall</h2>
+            </header>
 
-        <h4>Show Your Thoughts</h4>
-        <div id="image-post">
-            <input type="file" id="image-input" accept="image/*">
-            <input type="text" id="caption-input" placeholder="Add a caption">
-            <button onclick="uploadImage()">Upload</button>
-        </div>
+            <div class="feed-layout">
+                <!-- Post Creation Area -->
+                <div id="create-post" class="create-post-section">
+                    <div class="card glass-panel post-card">
+                        <h3><i class="bi bi-image"></i> Share an Image</h3>
+                        <div id="image-post" class="input-group">
+                            <label for="image-input" class="custom-file-upload">
+                                <i class="bi bi-cloud-upload"></i> Choose Image
+                            </label>
+                            <input type="file" id="image-input" accept="image/*">
+                            <input type="text" id="caption-input" placeholder="What's on your mind?">
+                            <button class="btn-primary" onclick="uploadImage()">Upload</button>
+                        </div>
+                    </div>
 
-        <h4>Share Your Thoughts</h4>
-        <div id="blog-post">
-            <textarea type="text" id="post-input"></textarea>
-            <button id="post-btn" onclick="createPost()">Post</button>
-        </div>
-        
+                    <div class="card glass-panel post-card">
+                        <h3><i class="bi bi-pencil-square"></i> Share Your Thoughts</h3>
+                        <div id="blog-post" class="input-group">
+                            <textarea type="text" id="post-input" placeholder="Write something amazing..."></textarea>
+                            <button id="post-btn" class="btn-primary" onclick="createPost()">Post</button>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Feed Area -->
+                <div class="feed-stream">
+                    <div id="main-container" class="posts-grid">
+                        <!-- Posts injected by JS -->
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
-
-    <div id="main-container">
-        
-    </div>
-
-    <button onclick="handleLogout()">logout</button>
-
 
     <script src="../js/feed.js"></script>
 </body>

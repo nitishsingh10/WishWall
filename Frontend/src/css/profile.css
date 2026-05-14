@@ -1,248 +1,237 @@
-/* *{
-    padding: 0;
-    margin: 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-body{
-    background-color: var(--bg-color);
-}
-header{
+/* Profile Layout Specifics */
+.profile-header {
+    padding: 2rem;
     display: flex;
-    justify-content: space-between;
-    align-items: center; 
-    padding: 15px 25px;
-    box-shadow: 0 4px 12px var(--box-shadowing);
-    border-radius: 8px;
+    align-items: center;
+    gap: 2rem;
 }
-#logoName{
-    font-size: 20px;
-    font-weight: bold;
-    color: color-mix(in srgb, var(--primary) 45% , var(--secondary) )  ;
-}
-.inner-element-header{
-    margin: 10px;
-    color: var(--text-light) ;
-    font-weight: 500;
-    text-decoration: none;
-}
-.inner-element-header:hover{
-    color: color-mix(in srgb, var(--primary) 45% , var(--secondary) )  ;
-}
-#btnLogout{
-    padding:10px 16px;
-}
-.btn-overall{
-    border-radius: 7px;
-    border: 1px solid var(--text-light);
-}
-.btn-overall:hover{
-    background-color: color-mix(in srgb, var(--primary) 45% , var(--secondary) )  ;
-    color: var(--white);
-}
-#dashboardContainer{
+
+.profile-info {
     display: flex;
+    align-items: center;
+    gap: 1.5rem;
 }
-#profileContainer{
+
+.profile-avatar {
+    font-size: 4rem;
+    color: var(--secondary-light);
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0, 30, 255, 0.1);
+}
+
+.greeting-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-dark);
+}
+
+/* Feed Layout Shared with Feed.css */
+.feed-layout {
     display: flex;
     flex-direction: column;
-    box-shadow: 0 10px 30px var(--box-shadowing);
-    margin-left: 10%;
-    margin-top: 3%;
-    border-radius: 4%;
-    padding: 15px 25px;
-    width: 20vw;
-}
-.img-container{
-    display: flex;
-    justify-content: center;
-    
-}
-#profileImgUser{
-    border-radius:50% ;
-    width: 8vw;
-    height: 14vh;
-    object-fit: cover;
-    box-shadow: 0 4px 10px rgba(0, 0, 0,0.3);
-}
-.solid-line{
-    border: none;
-    border-top: 1px solid lightgrey ;
-    width: 80%;
-    margin: 30px;
-    margin-left: 30px;
-}
-#userId{
-    display: flex;
-    justify-content: center;
-    margin-top: 14px;
-    font-size: 19px;
-    font-weight: 650;
-}
-#emailId{
-    display: flex;
-    justify-content: center;
-    color: var(--text-light);
+    gap: 2rem;
 }
 
-.bio-text{
-    font-size: 14px;
-    font-weight: 600;
-    margin: 10px;
-}
-#editBtn{
-    padding: 10px;
-    margin: 10px;
-}
-#postCountContainer{
-   display: flex;
-   justify-content: center;
-   flex-direction: column;
-   align-items: center;
-}
-#numberOfPost{
-    font-weight: 600;
-}
-#activityContainer{
-    padding: 2%;
-    padding-top: 3%;
-    width: 80vw;
-    box-sizing: border-box;
-}
-#titleActivity{
-    font-weight: bolder;
-    font-size: 19px;
-}
-.message-of-activity{
-   box-shadow: 0 4px 12px var(--box-shadowing);
-   margin-top: 20px;
-   padding: 40px; 
-   height: auto; 
-   width: 100%; 
-   display: flex;
-   align-items: center;
-   justify-content: space-around;
-   border-radius: 10px;
-   color: var(--text-light);
-   
+/* Create Post Section */
+.create-post-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
 }
 
-#postHandlerContainer{
+.post-card {
+    padding: 1.5rem;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
 }
-.post-handler{
+
+.post-card h3 {
+    font-size: 1.1rem;
+    color: var(--secondary);
     display: flex;
-    justify-content: center;
-    flex: 1;
-    text-decoration: none;
-    color:var(--text-light);
-    border: 1px solid var(--text-light) ;
-    border-radius: 20px;
-    padding: 10px;
-    margin-top: 15px
+    align-items: center;
+    gap: 0.5rem;
 }
-.post-handler:hover{
-     background-color: color-mix(in srgb, var(--primary) 45% , var(--secondary) )  ;
-    color: var(--white);
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
 }
-.my-post{
+
+.input-group input[type="text"],
+.input-group textarea {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    resize: none;
+}
+
+.input-group textarea {
+    min-height: 100px;
+}
+
+.input-group input[type="text"]:focus,
+.input-group textarea:focus {
+    outline: none;
+    border-color: var(--secondary-light);
+    box-shadow: 0 0 0 3px rgba(77, 119, 255, 0.15);
+    background: white;
+}
+
+.input-group input[type="file"] {
     display: none;
 }
-#postActive{
-    background-color: color-mix(in srgb, var(--primary) 45% , var(--secondary) )  ;
-    color: var(--white);
-} */
 
-/* From Uiverse.io by SouravBandyopadhyay */ 
-.card-title {
-  color: #262626;
-  font-size: 1.2em;
-  line-height: normal;
-  font-weight: 700;
-  margin-bottom: 0.5em;
+.custom-file-upload {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem;
+    border: 2px dashed rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.5);
+    color: var(--text-light);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.arrow-btn{
-    border: none;
-    background: none;
+.custom-file-upload:hover {
+    border-color: var(--secondary-light);
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--secondary);
 }
 
-.small-desc {
-  font-size: 1em;
-  font-weight: 400;
-  line-height: 1.5em;
-  color: #452c2c;
+/* Dynamically Generated Posts Container */
+.feed-stream {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
-.small-desc {
-  font-size: 1.3em;
-}
-.time-desc{
-  font-size: 0.7em;
-}
-
-.go-corner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: absolute;
-  width: 2em;
-  height: 2em;
-  overflow: hidden;
-  top: 0;
-  right: 0;
-  background: linear-gradient(135deg, #6293c8, #384c6c);
-  border-radius: 0 4px 0 32px;
+.posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
 }
 
-.go-arrow {
-  margin-top: -4px;
-  margin-right: -4px;
-  color: white;
-  font-family: courier, sans;
+/* Injected Post Cards (.card class from JS) */
+.posts-grid .card {
+    background: var(--card-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: var(--glass-shadow);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
-.card {
-  display: block;
-  position: relative;
-  max-width: 300px;
-  max-height: 420px;
-  background-color: #f2f8f9;
-  border-radius: 10px;
-  padding: 2em 1.2em;
-  margin: 12px;
-  text-decoration: none;
-  z-index: 0;
-  overflow: hidden;
-  background: linear-gradient(to bottom, #c3e6ec, #a7d1d9);
-  font-family: Arial, Helvetica, sans-serif;
+.posts-grid .card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--glass-shadow-hover);
 }
 
-.card:before {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  top: -16px;
-  right: -16px;
-  background: linear-gradient(135deg, #364a60, #384c6c);
-  height: 32px;
-  width: 32px;
-  border-radius: 32px;
-  transform: scale(1);
-  transform-origin: 50% 50%;
-  transition: transform 0.35s ease-out;
+.posts-grid .card .card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin: 0;
 }
 
-.card:hover:before {
-  transform: scale(28);
+.posts-grid .card img {
+    width: 100% !important;
+    height: auto;
+    border-radius: 12px !important;
+    object-fit: cover;
+    margin: 0.5rem 0;
 }
 
-.card:hover .small-desc {
-  transition: all 0.5s ease-out;
-  color: rgba(255, 255, 255, 0.8);
+.posts-grid .card .small-desc {
+    font-size: 1.05rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    margin: 0;
 }
 
-.card:hover .card-title {
-  transition: all 0.5s ease-out;
-  color: #ffffff;
+.posts-grid .card .time-desc {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+/* For Profile.js delete button */
+.posts-grid .card button:not(.go-arrow) {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--danger);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+}
+
+.posts-grid .card button:not(.go-arrow):hover {
+    background: var(--danger);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .create-post-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .layout-wrapper {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: static;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 1.5rem;
+    }
+
+    .brand h1 {
+        margin-bottom: 0;
+    }
+
+    .nav-links {
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .sidebar-footer {
+        margin-top: 0;
+    }
 }

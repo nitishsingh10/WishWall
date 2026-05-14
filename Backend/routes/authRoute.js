@@ -114,7 +114,7 @@ router.post('/login',async (req,res)=>{
                         user : {
                             name : user.name,
                             email : user.email,
-                            bio : user.bio
+                            bio : user.bio || 'some bio'
                         }
                     })
 
