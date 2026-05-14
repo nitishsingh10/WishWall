@@ -9,17 +9,30 @@
 <body>
     
     <div id="main-container">
+        <a href="./feed.html">Home</a>
         <section id="profile">
 
+            <h4 id="greet-msg">
+            </h4>
             
 
         </section>
-
+        <h4>Show Your thoughts</h4>
+        <div id="image-post">
+            <input type="file" id="image-input" accept="image/*">
+            <input type="text" id="caption-input" placeholder="Add a caption">
+            <button onclick="uploadImage()">Upload</button>
+        </div>
+        <h4>share your thoughts</h4>
+        <div id="blog-post">
+            <textarea type="text" id="post-input"></textarea>
+            <button id="post-btn" onclick="createPost()">Post</button>
+        </div>
         <section id="userposts">
-            
-
 
         </section>
+
+        <button onclick="handleLogout()">logout</button>
     </div>
 
     <script src="../js/profile.js"></script>

@@ -37,9 +37,11 @@ function signupPage(){
                 
                 if(pass.value != cnf.value){
                     document.getElementById("pass-msg").textContent = "Password did not match";
+                    document.getElementById("signup-btn").disabled = true;
                 }
                 else{
                     document.getElementById("pass-msg").textContent = "";
+                    document.getElementById("signup-btn").disabled = false;
                 }
             
             })
@@ -65,7 +67,7 @@ function loginPage() {
 
                 <p>Dont have an account ? <a onclick="signupPage()" class="create">Create now</a></p>
 
-                <button id="login-btn"><i class="bi bi-check"></i>Login</button>
+                <button id="login-btn" onclick="handleLogin()"><i class="bi bi-check"></i>Login</button>
             </div>`
 
 }

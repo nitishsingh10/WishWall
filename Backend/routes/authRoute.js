@@ -23,9 +23,10 @@ router.post('/signup',async (req,res)=>{
         const Exists = await User.findOne({email : userEmail});
 
         if(Exists){
-            return res.json({
-                message : "User already Exists"
-            })
+            return res.status(400)
+                        .json({
+                            message : "User already Exists"
+                        })
         }
 
         const hashedPassword = await bcrypt.hash(password,10);
@@ -51,7 +52,8 @@ router.post('/signup',async (req,res)=>{
                         token,
                         user: {
                             name: user.name,
-                            email: user.email
+                            email: user.email,
+                            bio : user.bio
                         }
                     })
         
@@ -111,7 +113,8 @@ router.post('/login',async (req,res)=>{
                         token,
                         user : {
                             name : user.name,
-                            email : user.email
+                            email : user.email,
+                            bio : user.bio
                         }
                     })
 

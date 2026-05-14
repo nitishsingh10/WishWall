@@ -4,11 +4,11 @@ const mongoose = require('mongoose');
 
 const postSchema = new mongoose.Schema({
 
-    message:{
+    message : {
         type: String,
         required: true
     },
-    author:{
+    author : {
         type: String,
         required: true
     },
@@ -16,6 +16,6 @@ const postSchema = new mongoose.Schema({
         type : Date,
         default : Date.now
     }
-},{timestamp : true});
+},{timestamps : true});
 
 module.exports = mongoose.model('Post', postSchema);

@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3000' // base url, PORT should come from .env but abi test ke liye thik hai
+const BASE_URL = 'https://wishwall-production.up.railway.app'; // base url
 
 // login feature
 async function handleLogin(){
@@ -24,7 +24,8 @@ async function handleLogin(){
     if(data.success){
         localStorage.setItem('token',data.token);
         localStorage.setItem('name',data.user.name);
-        window.location.href = "feed.html";
+        localStorage.setItem('bio',data.user.bio);
+        window.location.href = "/feed";
     }
     else{
         document.getElementById("pass-msg").textContent = data.message;
@@ -61,7 +62,8 @@ async function handleSignup(){
     if(data.success){
         localStorage.setItem('token',data.token);
         localStorage.setItem('name',data.user.name);
-        window.location.href = "feed.html";
+        localStorage.setItem('bio',data.user.bio);
+        window.location.href = "/feed";
     }
     else{
         console.log(data.message);

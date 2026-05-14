@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3000'
+const BASE_URL = 'https://wishwall-production.up.railway.app';
 let posts =[];
 
 // onload token verify krna hai.. if token exists allow karo to stay otherwise login pe bhaga do
@@ -15,7 +15,7 @@ window.onload = async()=>{
 
             // delay taki user ko problem dikhe
             setTimeout(()=>{
-                window.location.href = "login.html"
+                window.location.href = "/login"
             },5000);
         }
         else{
@@ -35,7 +35,7 @@ window.onload = async()=>{
 async function loadFeed(token){
 
     const response = await fetch(`${BASE_URL}/api/post/feed`,{
-        method : 'POST',
+        method : 'GET',
         headers : {
             "Content-type" : 'application/json', 
             "Authorization": `Bearer ${token}` // token pass taki verify kr paye if the request is good
@@ -56,20 +56,29 @@ function displayFeed(){
     let root = document.getElementById("main-container");
     root.innerHTML = "";
 
-    posts.forEach(element => {
-        // sample card for temporary presentation
-        root.innerHTML+=` <div class="card">
+    posts.forEach((element) => { 
+        // check if it is an image post or a text post and display accordingly
+        let content = "";
+        if(element.image){ // if image is found display that else, normal message
+            
+            content = `<img src="${element.image}" alt="post image" style="width:50%; border-radius:8px;">
+            <p class="small-desc">${element.caption}</p>`;
+        }
+        else{
+            content = `<p class="small-desc">${element.message}</p>`;
+            
+        }
+        // these are templates from internet and must be updated;
+
+    root.innerHTML+=` <div class="card">
       <p class="card-title">${element.author}</p> 
-      <p class="small-desc">
-        ${element.message}
-      </p>
+      ${content}
       <p class="time-desc">${new Date(element.time)}</p>
       <div class="go-corner">
         <button class="go-arrow arrow-btn">→</button>
       </div>
     </div>`
     });
-
 }
 
 // Creation of new post directly from feed
@@ -107,14 +116,59 @@ async function createPost(){
 
 }
 
+async function uploadImage(){
+    
+    
+    let token = localStorage.getItem('token');
+    const file = document.getElementById('image-input').files[0];
+    const caption = document.getElementById('caption-input').value;
+    
+    if (!file) return alert("Please select an image");
+    const formData = new FormData();
+    formData.append('image', file);
+    formData.append('caption', caption);
+
+    try{
+
+        const response = await fetch(`${BASE_URL}/api/post/upload`, {
+            method: 'POST',
+            headers: {
+                "Authorization": `Bearer ${token}`
+            },
+            body: formData
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            document.getElementById('image-input').value = "";
+            document.getElementById('caption-input').value = "";
+            window.location.reload();
+        } else {
+            alert(data.message);
+        }
+
+    }
+    catch(err){
+        console.log(err);
+    };
+
+
+
+}
+
 // logout feature
 function handleLogout(){
+
+    if(!confirm("Do You really want to logout ?")){ // This shall be replaced with a toast message or in-page popup
+        return;
+    }
     
     document.querySelector("body").textContent = "Logout Successfull redirecting to login page";
 
     // clear the local storage so the userdata is cleared and is required to login again
     setTimeout(()=>{
         localStorage.clear();
-        window.location.href = "login.html"
+        window.location.href = "/login"
     },3000);
 }
